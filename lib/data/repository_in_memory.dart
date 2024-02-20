@@ -58,4 +58,13 @@ class Repository implements AppRepository {
       yield movie;
     }
   }
+
+  @override
+  Stream<List<Movie>> getFilteredMovies(String title) async* {
+    final filteredMovies = movieList
+        .where(
+            (movie) => movie.title.toLowerCase().contains(title.toLowerCase()))
+        .toList();
+    yield filteredMovies;
+  }
 }

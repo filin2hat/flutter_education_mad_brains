@@ -14,6 +14,7 @@ class StartScreen extends StatefulWidget {
 class _StartScreenState extends State<StartScreen> {
   late bool _isLoading;
   final List<Movie> _movies = [];
+  final Repository repository = Repository();
 
   @override
   void initState() {
@@ -51,7 +52,6 @@ class _StartScreenState extends State<StartScreen> {
             setState(() {
               _isLoading = true;
             });
-            final repository = Repository();
             final movieStream = repository.getMovie();
             movieStream.listen((movie) {
               setState(() {
