@@ -54,7 +54,7 @@ class Repository implements AppRepository {
   @override
   Stream<Movie> getMovie() async* {
     for (var movie in movieList) {
-      await Future.delayed(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 350));
       yield movie;
     }
   }

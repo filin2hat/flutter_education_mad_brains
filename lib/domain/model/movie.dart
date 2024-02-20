@@ -3,11 +3,8 @@ import '../mixin/convert_language.dart';
 import 'film.dart';
 
 class Movie extends Film with ConvertLanguage {
-  Movie(id, title, picture, voteAverage, releaseDate, description, language)
-      : super(id, title, picture, voteAverage, releaseDate, description,
-            language) {
-    language = convertToEnum(language);
-  }
+  Movie(super.id, super.title, super.picture, super.voteAverage,
+      super.releaseDate, super.description, super.language);
 
   @override
   String toString() {
