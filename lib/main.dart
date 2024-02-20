@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lesson_3/presentation/widgets/film_card_widget.dart';
+import 'package:flutter_lesson_3/presentation/widgets/movie_list_widget.dart';
 
-import 'domain/model/movie.dart';
 import 'data/repository_in_memory.dart';
+import 'domain/model/movie.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +35,7 @@ class KinopoiskApp extends StatefulWidget {
 
 class _KinopoiskAppState extends State<KinopoiskApp> {
   late bool _isLoading;
+  final List<Movie> _movies = [];
 
   @override
   void initState() {
@@ -43,47 +46,59 @@ class _KinopoiskAppState extends State<KinopoiskApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Kinopoisk',
-              style: TextStyle(color: Colors.redAccent, fontSize: 30)),
-          centerTitle: true,
-          backgroundColor: Colors.black87,
+      appBar: AppBar(
+        title: const Text(
+          'Kinopoisk',
+          style: TextStyle(color: Colors.redAccent, fontSize: 30),
         ),
-        body: Container(
-          padding: const EdgeInsets.all(16.0),
-          color: Color.alphaBlend(Colors.black87, Colors.red),
-          child:  Center(
-            child: MovieListWidget(movies: movieList,),
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            //todo DownloadFilms
-          },
-          backgroundColor: Colors.red,
-          foregroundColor: Colors.white,
-          tooltip: 'Download films',
-          child: const Icon(Icons.download),
-        ));
-  }
-}
-
-class MovieListWidget extends StatelessWidget {
-  final List<Movie> movies;
-
-  const MovieListWidget({Key? key, required this.movies}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: movies.length,
-      itemBuilder: (context, index) {
-        final movie = movies[index];
-        return ListTile(
-          title: Text(movie.title),
-          leading: Image.asset(movie.picture),
-        );
-      },
+        centerTitle: true,
+        backgroundColor: Colors.black87,
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(8.0),
+        color: Color.alphaBlend(Colors.black87, Colors.red),
+        child: MovieList(movies: _movies),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (!_isLoading) {
+            if (_movies.isNotEmpty) {
+              _movies.clear();
+            }
+            setState(
+              () {
+                _isLoading = true;
+              },
+            );
+            final repository = Repository();
+            final movieStream = repository.getMovie();
+            movieStream.listen(
+              (movie) {
+                setState(
+                  () {
+                    _movies.add(movie);
+                  },
+                );
+              },
+              onDone: () {
+                setState(
+                  () {
+                    _isLoading = false;
+                  },
+                );
+              },
+            );
+          }
+          ;
+        },
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+        tooltip: 'Download films',
+        child: const Icon(Icons.download),
+      ),
     );
   }
 }
+
+
+
