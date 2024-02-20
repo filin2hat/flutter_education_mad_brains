@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'domain/model/movie.dart';
-import 'dummy_data.dart';
+import 'data/repository_in_memory.dart';
 
 void main() {
   runApp(const MyApp());

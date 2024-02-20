@@ -11,13 +11,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
 
@@ -27,6 +27,8 @@ flutter:
     - assets/posters/img1.jpg
     - assets/posters/img2.jpg
     - assets/posters/img3.jpg
+    - assets/posters/img4.jpg
+    - assets/posters/img5.jpg
 
   fonts:
     - family: Anta
