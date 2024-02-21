@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lesson_3/presentation/widgets/start_screen_widget.dart';
+import 'package:flutter_education_mad_brains/presentation/widgets/start_screen_widget.dart';
 
 void main() {
   runApp(const MyApp());
