@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../../data/repository_in_memory.dart';
-import '../../domain/model/movie.dart';
+import '../data/repository_in_memory.dart';
+import '../domain/model/movie_model.dart';
 import 'film_card_widget.dart';
 
 class MovieList extends StatefulWidget {
   const MovieList({
     super.key,
-    required List<Movie> movies,
+    required List<MovieModel> movies,
   }) : _movies = movies;
 
-  final List<Movie> _movies;
+  final List<MovieModel> _movies;
 
   @override
   State<MovieList> createState() => _MovieListState();
 }
 
 class _MovieListState extends State<MovieList> {
-  late List<Movie> _filteredMovies;
+  late List<MovieModel> _filteredMovies;
   late TextEditingController _searchController;
   final Repository repository = Repository();
 

@@ -1,9 +1,9 @@
 import '../enum/language.dart';
 import '../mixin/convert_language.dart';
-import 'film.dart';
+import 'film_model.dart';
 
-class Movie extends Film with ConvertLanguage {
-  Movie(super.id, super.title, super.picture, super.voteAverage,
+class MovieModel extends FilmModel with ConvertLanguage {
+  MovieModel(super.id, super.title, super.picture, super.voteAverage,
       super.releaseDate, super.description, super.language);
 
   @override

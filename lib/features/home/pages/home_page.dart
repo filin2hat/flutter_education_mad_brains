@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../data/repository_in_memory.dart';
-import '../../domain/model/movie.dart';
-import 'movie_list_widget.dart';
+import '../../../app/data/repository_in_memory.dart';
+import '../../../app/domain/model/movie_model.dart';
+import '../../../app/widgets/movie_list.dart';
 
-class StartScreen extends StatefulWidget {
-  const StartScreen({super.key});
+class StartPage extends StatefulWidget {
+  const StartPage({super.key});
 
   @override
-  State<StartScreen> createState() => _StartScreenState();
+  State<StartPage> createState() => _StartPageState();
 }
 
-class _StartScreenState extends State<StartScreen> {
+class _StartPageState extends State<StartPage> {
   late bool _isLoading;
-  final List<Movie> _movies = [];
+  final List<MovieModel> _movies = [];
   final Repository repository = Repository();
 
   @override

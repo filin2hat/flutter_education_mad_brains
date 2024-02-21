@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/model/movie.dart';
+import '../domain/model/movie_model.dart';
 
 class FilmCard extends StatelessWidget {
   const FilmCard({
@@ -8,7 +8,7 @@ class FilmCard extends StatelessWidget {
     required this.movie,
   });
 
-  final Movie movie;
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class TextSection extends StatelessWidget {
     required this.movie,
   });
 
-  final Movie movie;
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {
@@ -45,28 +45,35 @@ class TextSection extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Text(
-              movie.title,
-              style: const TextStyle(fontSize: 18, color: Colors.white),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Text(
+                movie.title,
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            const SizedBox(height: 4),
-            Text(
-              movie.description,
-              style: const TextStyle(fontSize: 13, color: Colors.white70),
-              maxLines: 4,
-              overflow: TextOverflow.ellipsis,
+            Padding(
+              padding: const EdgeInsets.only(top: 4, bottom: 4),
+              child: Text(
+                movie.description,
+                style: const TextStyle(fontSize: 13, color: Colors.white70),
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            const SizedBox(height: 4),
-            Text(
-              'Year: ${movie.releaseDate.year} \nLang: ${movie.language}',
-              style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.white54,
-                  fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                'Year: ${movie.releaseDate.year} \nLang: ${movie.language}',
+                style: const TextStyle(fontSize: 12, color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -81,7 +88,7 @@ class ImageSection extends StatelessWidget {
     required this.movie,
   });
 
-  final Movie movie;
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {

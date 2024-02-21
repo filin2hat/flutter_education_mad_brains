@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/presentation/widgets/start_screen_widget.dart';
+
+import 'features/home/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +15,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Anta',
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromARGB(255, 111, 17, 17)),
+        primarySwatch: Colors.red,
         useMaterial3: true,
       ),
-      home: const StartScreen(),
+      home: const StartPage(),
     );
   }
 }
