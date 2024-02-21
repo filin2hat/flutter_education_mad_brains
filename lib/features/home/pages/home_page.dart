@@ -26,13 +26,33 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Kinopoisk',
-          style: TextStyle(color: Colors.redAccent, fontSize: 30),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.black87,
-      ),
+          leading: IconButton(
+            onPressed: () {
+              //TODO Implement menu pressed
+            },
+            icon: const Icon(Icons.menu),
+            color: Colors.red,
+          ),
+          title: const Text('Kinopoisk',
+              style: TextStyle(color: Colors.redAccent, fontSize: 30)),
+          actions: [
+            IconButton(
+              onPressed: () {
+                //TODO implement sorted list button
+              },
+              icon: const Icon(Icons.sort),
+              color: Colors.red,
+            ),
+            IconButton(
+              onPressed: () {
+                //TODO implement settings button
+              },
+              icon: const Icon(Icons.settings),
+              color: Colors.red,
+            ),
+          ],
+          centerTitle: true,
+          backgroundColor: Colors.black87),
       body: Container(
         padding: const EdgeInsets.all(8.0),
         color: Color.alphaBlend(Colors.black87, Colors.red),
