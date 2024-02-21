@@ -5,10 +5,8 @@ import '../domain/model/movie_model.dart';
 import 'film_card_widget.dart';
 
 class MovieList extends StatefulWidget {
-  const MovieList({
-    super.key,
-    required List<MovieModel> movies,
-  }) : _movies = movies;
+  const MovieList({super.key, required List<MovieModel> movies})
+      : _movies = movies;
 
   final List<MovieModel> _movies;
 

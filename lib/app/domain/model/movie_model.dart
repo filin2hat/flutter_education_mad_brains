@@ -1,21 +1,18 @@
 import '../enum/language.dart';
 import '../mixin/convert_language.dart';
-import 'film_model.dart';
 
-class MovieModel extends FilmModel with ConvertLanguage {
-  MovieModel(super.id, super.title, super.picture, super.voteAverage,
-      super.releaseDate, super.description, super.language);
+class MovieModel with ConvertLanguage {
+  final int id;
+  final String title;
+  final String picture;
+  final double voteAverage;
+  final DateTime releaseDate;
+  final String description;
+  String language;
 
-  @override
-  String toString() {
+  MovieModel(this.id, this.title, this.picture, this.voteAverage,
+      this.releaseDate, this.description, this.language) {
     Language languageEnum = convertToEnum(language);
-    String languageString = languageEnum.toPrettyString();
-    return 'Movie{id: $id,'
-        ' title: $title,'
-        ' picture: $picture,'
-        ' voteAverage: $voteAverage,'
-        ' releaseDate: $releaseDate,'
-        ' description: $description,'
-        ' language: $languageString}';
+    language = languageEnum.toPrettyString();
   }
 }
