@@ -1,3 +1,3 @@
-# flutter_lesson_3
+# flutter_education_mad_brains
 
-A new Flutter project.
+Educational project from Mad Brains.
