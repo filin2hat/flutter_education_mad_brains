@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/film_list.dart';
+import '../widgets/film_grid.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
               })
         ],
       ),
-      body: const FilmList(),
+      body: const FilmGrid(),
     );
   }
 }

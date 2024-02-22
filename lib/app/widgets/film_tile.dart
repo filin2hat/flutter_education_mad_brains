@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/film_card_model.dart';
+import 'image_network.dart';
 
 class FilmTile extends StatelessWidget {
   const FilmTile(
@@ -40,13 +41,7 @@ class FilmTile extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: Image.network(picture,
-              loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress == null) {
-              return child;
-            }
-            return const CircularProgressIndicator();
-          }),
+          child: ImageNetwork(pictureUrl: picture),
         ),
         Expanded(
           flex: 3,
