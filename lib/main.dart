@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'features/home/pages/home_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -10,25 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Films App',
       theme: ThemeData(
         fontFamily: 'Anta',
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepPurple,
         useMaterial3: true,
       ),
-      home: const StartPage(),
+      home: const MyHomePage(title: 'Films'),
     );
-  }
-}
-
-class StartPage extends StatelessWidget {
-  const StartPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-      child: Text('Start Page'),
-    ));
   }
 }
