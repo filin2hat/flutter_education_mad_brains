@@ -3,6 +3,7 @@ import 'package:flutter_education_mad_brains/app/widgets/buttons/primary_button.
 import 'package:flutter_education_mad_brains/app/widgets/image_network.dart';
 
 import '../models/film_card_model.dart';
+import 'buttons/like_button.dart';
 
 class FilmCard extends StatelessWidget {
   const FilmCard(
@@ -59,6 +60,11 @@ class FilmCard extends StatelessWidget {
             ),
           ),
         ),
+        const Positioned(
+          left: 2,
+          top: 2,
+          child: LikeButton(),
+        )
       ],
     );
   }
