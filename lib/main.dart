@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Films App',
       theme: ThemeData(
+        primaryColor: Theme.of(context).colorScheme.primary,
         fontFamily: 'Anta',
-        primarySwatch: Colors.deepPurple,
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Films'),

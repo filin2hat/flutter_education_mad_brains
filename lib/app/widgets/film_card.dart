@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_education_mad_brains/app/widgets/buttons/primary_button.dart';
 import 'package:flutter_education_mad_brains/app/widgets/image_network.dart';
 
 import '../models/film_card_model.dart';
@@ -27,19 +28,38 @@ class FilmCard extends StatelessWidget {
   final double voteAverage;
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Positioned.fill(
+    return Stack(
+      children: [
+        Positioned.fill(
           child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: ImageNetwork(
-                pictureUrl: picture,
-              ))),
-      Positioned(
-        left: 4,
-        top: 4,
-        child: _RatingChip(voteAverage: voteAverage),
-      )
-    ]);
+            borderRadius: BorderRadius.circular(10),
+            child: ImageNetwork(
+              pictureUrl: picture,
+            ),
+          ),
+        ),
+        Positioned(
+          right: 4,
+          top: 4,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 4),
+            child: _RatingChip(voteAverage: voteAverage),
+          ),
+        ),
+        Positioned(
+          left: 8,
+          bottom: 8,
+          right: 8,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: PrimaryButton(
+              title: "More",
+              onPressed: () {},
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -51,20 +71,25 @@ class _RatingChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
-        padding: const EdgeInsets.all(4),
-        shape: const StadiumBorder(),
-        elevation: 2,
-        shadowColor: Colors.black,
-        labelPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
-        avatar: const Icon(
-          Icons.star,
-          color: Colors.yellow,
-        ),
-        label: Text(voteAverage.toStringAsFixed(1),
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall
-                ?.copyWith(color: Colors.white)),
-        backgroundColor: Theme.of(context).primaryColor);
+      surfaceTintColor: Theme.of(context).primaryColor,
+      side: BorderSide(color: Theme.of(context).primaryColor),
+      padding: const EdgeInsets.all(4),
+      shape: const StadiumBorder(),
+      elevation: 2,
+      shadowColor: Colors.black,
+      labelPadding: const EdgeInsets.symmetric(horizontal: 4),
+      backgroundColor: Theme.of(context).primaryColor,
+      avatar: const Icon(
+        Icons.star,
+        color: Colors.yellow,
+      ),
+      label: Text(
+        voteAverage.toStringAsFixed(1),
+        style: Theme.of(context)
+            .textTheme
+            .titleSmall
+            ?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+      ),
+    );
   }
 }

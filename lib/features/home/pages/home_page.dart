@@ -11,7 +11,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Theme.of(context).primaryColor,
         leading: IconButton(
           icon: const Icon(Icons.menu, color: Colors.white),
           onPressed: () {
@@ -34,7 +34,6 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       body: const FilmGrid(),
-      backgroundColor: Theme.of(context).primaryColorLight,
     );
   }
 }
