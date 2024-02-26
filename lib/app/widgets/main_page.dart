@@ -34,40 +34,43 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).primaryColor,
-          leading: IconButton(
-            icon: const Icon(Icons.menu, color: Colors.white),
-            onPressed: () {
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        leading: IconButton(
+          icon: const Icon(Icons.menu, color: Colors.white),
+          onPressed: () {
 //TODO : implement menu function
-            },
-          ),
-          title: const Text('Films App', style: TextStyle(color: Colors.white)),
-          centerTitle: true,
-          actions: [
-            IconButton(
-                icon: const Icon(Icons.sort, color: Colors.white),
-                onPressed: () {
-//TODO : implement sort function
-                }),
-            IconButton(
-                icon: const Icon(Icons.settings, color: Colors.white),
-                onPressed: () {
-//TODO : implement settings function
-                })
-          ],
+          },
         ),
-        body: MainPage._tabs.elementAt(_selectedIndex).page,
-        bottomNavigationBar: BottomNavigationBar(
-          items: List.generate(
-              MainPage._tabs.length,
-              (index) => BottomNavigationBarItem(
-                    icon: MainPage._tabs.elementAt(index).icon,
-                    label: MainPage._tabs.elementAt(index).label,
-                  )),
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-        ));
+        title: const Text('Films App', style: TextStyle(color: Colors.white)),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              icon: const Icon(Icons.sort, color: Colors.white),
+              onPressed: () {
+//TODO : implement sort function
+              }),
+          IconButton(
+              icon: const Icon(Icons.settings, color: Colors.white),
+              onPressed: () {
+//TODO : implement settings function
+              })
+        ],
+      ),
+      body: MainPage._tabs.elementAt(_selectedIndex).page,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Colors.white,
+        items: List.generate(
+            MainPage._tabs.length,
+            (index) => BottomNavigationBarItem(
+                  icon: MainPage._tabs.elementAt(index).icon,
+                  label: MainPage._tabs.elementAt(index).label,
+                )),
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
+    );
   }
 }
 

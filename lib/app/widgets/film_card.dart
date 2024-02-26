@@ -35,6 +35,7 @@ class FilmCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: ImageNetwork(
               pictureUrl: picture,
+              fit: BoxFit.fill,
             ),
           ),
         ),

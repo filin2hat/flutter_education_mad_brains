@@ -6,8 +6,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: FilmList(),
+    return Scaffold(
+      body: const FilmList(),
+      backgroundColor: Theme.of(context).colorScheme.onBackground,
     );
   }
 }

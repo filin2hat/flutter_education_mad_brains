@@ -37,24 +37,36 @@ class FilmTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: ImageNetwork(pictureUrl: picture),
-        ),
-        Expanded(
-          flex: 3,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: Theme.of(context).textTheme.headlineSmall),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Row(
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        side: BorderSide(
+            color: Theme.of(context).colorScheme.primary, width: 1.0),
+      ),
+      elevation: 6.0,
+      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+      color: Theme.of(context).colorScheme.primaryContainer,
+      shadowColor: Theme.of(context).colorScheme.primary,
+      child: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: ImageNetwork(
+              pictureUrl: picture,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(title, style: Theme.of(context).textTheme.headlineSmall),
+                  Row(
                     children: [
                       const Padding(
                           padding: EdgeInsets.only(right: 8.0),
@@ -74,24 +86,26 @@ class FilmTile extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 16.0, bottom: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Text(
                       'Год выхода: $releaseDate',
                       style: Theme.of(context).textTheme.bodySmall,
                       overflow: TextOverflow.ellipsis,
-                    )),
-                Text(
-                  description,
-                  maxLines: 4,
-                  overflow: TextOverflow.ellipsis,
-                )
-              ],
+                    ),
+                  ),
+                  Text(
+                    description,
+                    maxLines: 5,
+                    overflow: TextOverflow.fade,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

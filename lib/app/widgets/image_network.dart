@@ -4,7 +4,7 @@ class ImageNetwork extends StatelessWidget {
   const ImageNetwork({
     super.key,
     required this.pictureUrl,
-    this.fit = BoxFit.cover,
+    required this.fit,
   });
 
   final String pictureUrl;

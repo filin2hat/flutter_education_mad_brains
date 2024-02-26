@@ -7,8 +7,9 @@ class CatalogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: FilmGrid(),
+    return Scaffold(
+      body: const FilmGrid(),
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
     );
   }
 }
