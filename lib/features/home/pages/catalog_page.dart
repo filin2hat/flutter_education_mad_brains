@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/features/home/widgets/film_list.dart';
+
+import '../widgets/film_grid.dart';
 
 class CatalogPage extends StatelessWidget {
   const CatalogPage({super.key});
@@ -7,7 +8,7 @@ class CatalogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: FilmList(),
+      body: FilmGrid(),
     );
   }
 }
