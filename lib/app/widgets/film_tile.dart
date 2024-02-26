@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_education_mad_brains/app/widgets/buttons/primary_button.dart';
 
 import '../models/film_card_model.dart';
 import 'image_network.dart';
@@ -52,10 +53,21 @@ class FilmTile extends StatelessWidget {
         children: [
           Expanded(
             flex: 2,
-            child: ImageNetwork(
-              pictureUrl: picture,
-              fit: BoxFit.cover,
-            ),
+            child: Stack(children: [
+              ImageNetwork(
+                pictureUrl: picture,
+                fit: BoxFit.cover,
+              ),
+              Positioned(
+                left: 8,
+                bottom: 8,
+                right: 8,
+                child: PrimaryButton(
+                  title: "More",
+                  onPressed: () {},
+                ),
+              )
+            ]),
           ),
           Expanded(
             flex: 3,
@@ -96,10 +108,10 @@ class FilmTile extends StatelessWidget {
                   ),
                   Text(
                     description,
-                    maxLines: 5,
-                    overflow: TextOverflow.fade,
+                    maxLines: 6,
+                    overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodySmall,
-                  )
+                  ),
                 ],
               ),
             ),

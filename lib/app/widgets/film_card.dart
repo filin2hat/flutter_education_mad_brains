@@ -71,25 +71,44 @@ class _RatingChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      surfaceTintColor: Theme.of(context).primaryColor,
-      side: BorderSide(color: Theme.of(context).primaryColor),
-      padding: const EdgeInsets.all(4),
-      shape: const StadiumBorder(),
-      elevation: 2,
-      shadowColor: Colors.black,
-      labelPadding: const EdgeInsets.symmetric(horizontal: 4),
-      backgroundColor: Theme.of(context).primaryColor,
-      avatar: const Icon(
-        Icons.star,
-        color: Colors.yellow,
-      ),
-      label: Text(
-        voteAverage.toStringAsFixed(1),
-        style: Theme.of(context)
-            .textTheme
-            .titleSmall
-            ?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Theme.of(context).colorScheme.primary,
+              blurRadius: 3,
+              spreadRadius: 2,
+            ),
+          ],
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).colorScheme.primary,
+              Theme.of(context).colorScheme.onBackground,
+            ],
+          ),
+        ),
+        child: Material(
+          type: MaterialType.transparency,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: Row(
+                children: [
+                  const Icon(Icons.star, color: Colors.yellow, size: 16),
+                  const SizedBox(width: 4),
+                  Text(
+                    voteAverage.toStringAsFixed(1),
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
