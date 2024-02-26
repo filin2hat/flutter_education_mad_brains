@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'features/home/pages/home_page.dart';
+import 'package:flutter_education_mad_brains/app/widgets/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Films App',
       theme: ThemeData(
-        primaryColor: Theme.of(context).colorScheme.primary,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Theme.of(context).colorScheme.primary,
+        ),
         fontFamily: 'Anta',
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Films'),
+      home: const MainPage(),
     );
   }
 }
