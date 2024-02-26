@@ -34,6 +34,7 @@ class MyHomePage extends StatelessWidget {
         ],
       ),
       body: const FilmGrid(),
+      backgroundColor: Theme.of(context).primaryColorLight,
     );
   }
 }

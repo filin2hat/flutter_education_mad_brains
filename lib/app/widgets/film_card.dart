@@ -30,12 +30,12 @@ class FilmCard extends StatelessWidget {
     return Stack(children: [
       Positioned.fill(
           child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               child: ImageNetwork(
                 pictureUrl: picture,
               ))),
       Positioned(
-        right: 4,
+        left: 4,
         top: 4,
         child: _RatingChip(voteAverage: voteAverage),
       )
@@ -51,6 +51,11 @@ class _RatingChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Chip(
+        padding: const EdgeInsets.all(4),
+        shape: const StadiumBorder(),
+        elevation: 2,
+        shadowColor: Colors.black,
+        labelPadding: const EdgeInsets.symmetric(horizontal: 4, vertical: 0),
         avatar: const Icon(
           Icons.star,
           color: Colors.yellow,
