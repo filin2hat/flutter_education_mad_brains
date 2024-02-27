@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_education_mad_brains/app/widgets/buttons/primary_button.dart';
 import 'package:flutter_education_mad_brains/app/widgets/image_network.dart';
 
+import '../../features/details/pages/details_page.dart';
 import '../models/film_card_model.dart';
 import 'buttons/like_button.dart';
 
@@ -11,7 +12,11 @@ class FilmCard extends StatelessWidget {
       required this.id,
       required this.title,
       required this.picture,
-      required this.voteAverage});
+      required this.voteAverage,
+      required this.releaseDate,
+      required this.description,
+      required this.director,
+      required this.genre});
 
   factory FilmCard.fromModel({required FilmCardModel model, Key? key}) {
     return FilmCard(
@@ -19,6 +24,10 @@ class FilmCard extends StatelessWidget {
       title: model.title,
       picture: model.picture,
       voteAverage: model.voteAverage,
+      releaseDate: model.releaseDate,
+      description: model.description,
+      director: model.director,
+      genre: model.genre,
       key: key,
     );
   }
@@ -27,6 +36,11 @@ class FilmCard extends StatelessWidget {
   final String title;
   final String picture;
   final double voteAverage;
+  final String releaseDate;
+  final String description;
+  final String director;
+  final String genre;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -57,7 +71,12 @@ class FilmCard extends StatelessWidget {
             child: PrimaryButton(
               title: "More",
               onPressed: () {
-                // TODO: implement navigation to details page
+                Navigator.pushNamed(
+                  context,
+                  '/details',
+                  arguments: DetailsArguments(id, title, picture, voteAverage,
+                      releaseDate, description, director, genre),
+                );
               },
             ),
           ),

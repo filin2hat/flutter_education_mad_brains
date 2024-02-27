@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education_mad_brains/app/widgets/main_page.dart';
 
+import 'features/details/pages/details_page.dart';
 import 'features/settings/pages/settings_page.dart';
 
 void main() {
@@ -28,13 +29,25 @@ class MyApp extends StatelessWidget {
             builder: (context) => const MainPage(),
           );
         }
+
         if (settings.name == SettingsPage.path) {
-          final SettingsArguments arguments =
-              settings.arguments as SettingsArguments;
-          return MaterialPageRoute(builder: (context) {
-            return SettingsPage(arguments: arguments);
-          });
+          return MaterialPageRoute(
+            builder: (context) {
+              return const SettingsPage();
+            },
+          );
         }
+
+        if (settings.name == DetailsPage.path) {
+          final DetailsArguments arguments =
+              settings.arguments as DetailsArguments;
+          return MaterialPageRoute(
+            builder: (context) {
+              return DetailsPage(arguments: arguments);
+            },
+          );
+        }
+        return null;
       },
     );
   }

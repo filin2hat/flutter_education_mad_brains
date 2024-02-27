@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_education_mad_brains/app/widgets/buttons/primary_button.dart';
 
+import '../../features/details/pages/details_page.dart';
 import '../models/film_card_model.dart';
 import 'image_network.dart';
 
@@ -12,7 +13,9 @@ class FilmTile extends StatelessWidget {
       required this.picture,
       required this.voteAverage,
       required this.releaseDate,
-      required this.description});
+      required this.description,
+      required this.director,
+      required this.genre});
 
   factory FilmTile.fromModel({
     required FilmCardModel model,
@@ -25,6 +28,8 @@ class FilmTile extends StatelessWidget {
       voteAverage: model.voteAverage,
       releaseDate: model.releaseDate,
       description: model.description,
+      director: model.director,
+      genre: model.genre,
       key: key,
     );
   }
@@ -35,6 +40,8 @@ class FilmTile extends StatelessWidget {
   final double voteAverage;
   final String releaseDate;
   final String description;
+  final String director;
+  final String genre;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +72,19 @@ class FilmTile extends StatelessWidget {
                 child: PrimaryButton(
                   title: "More",
                   onPressed: () {
-                    // TODO: implement navigation to details page
+                    Navigator.pushNamed(
+                      context,
+                      '/details',
+                      arguments: DetailsArguments(
+                          id,
+                          title,
+                          picture,
+                          voteAverage,
+                          releaseDate,
+                          description,
+                          director,
+                          genre),
+                    );
                   },
                 ),
               )

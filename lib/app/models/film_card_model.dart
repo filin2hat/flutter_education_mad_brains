@@ -6,6 +6,8 @@ class FilmCardModel {
     this.voteAverage = 0.0,
     this.releaseDate = '',
     this.description = '',
+    this.director = '',
+    this.genre = '',
   });
   final int id;
   final String title;
@@ -13,4 +15,6 @@ class FilmCardModel {
   final double voteAverage;
   final String releaseDate;
   final String description;
+  final String director;
+  final String genre;
 }

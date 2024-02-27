@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_education_mad_brains/features/home/pages/home_page.dart';
 
 import '../../features/home/pages/catalog_page.dart';
-import '../../features/settings/pages/settings_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -54,12 +53,11 @@ class _MainPageState extends State<MainPage> {
                 //TODO : implement sort function
               }),
           IconButton(
-              icon: const Icon(Icons.settings, color: Colors.white),
-              onPressed: () {
-                Navigator.pushNamed(context, '/settings',
-                    arguments:
-                        const SettingsArguments('Ruslan', '5Z3Fb@example.com'));
-              })
+            icon: const Icon(Icons.settings, color: Colors.white),
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
+          )
         ],
       ),
       body: MainPage._tabs.elementAt(_selectedIndex).page,

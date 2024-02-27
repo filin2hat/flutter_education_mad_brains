@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SettingsArguments {
-  const SettingsArguments(this.name, this.email);
-  final String name;
-  final String? email;
-}
-
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key, required this.arguments});
-
-  final SettingsArguments arguments;
-
+  const SettingsPage({super.key});
   static const path = '/settings';
 
   @override
@@ -24,12 +15,6 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Name: ${arguments.name}',
-            ),
-            Text(
-              'Email: ${arguments.email ?? 'N/A'}',
-            ),
             ElevatedButton(
               onPressed: () {
                 SystemChannels.platform.invokeMethod('SystemNavigator.pop');
