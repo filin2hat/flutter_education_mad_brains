@@ -64,7 +64,9 @@ class FilmTile extends StatelessWidget {
                 right: 8,
                 child: PrimaryButton(
                   title: "More",
-                  onPressed: () {},
+                  onPressed: () {
+                    // TODO: implement navigation to details page
+                  },
                 ),
               )
             ]),

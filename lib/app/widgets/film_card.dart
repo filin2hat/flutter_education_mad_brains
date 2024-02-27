@@ -56,7 +56,9 @@ class FilmCard extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 8),
             child: PrimaryButton(
               title: "More",
-              onPressed: () {},
+              onPressed: () {
+                // TODO: implement navigation to details page
+              },
             ),
           ),
         ),
