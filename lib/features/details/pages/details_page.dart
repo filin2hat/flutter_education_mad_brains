@@ -34,55 +34,70 @@ class DetailsPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8.0),
-        physics: const BouncingScrollPhysics(),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  arguments.title,
-                  style: TextStyle(
-                    fontSize:
-                        Theme.of(context).textTheme.titleLarge?.fontSize ??
-                            24.0,
-                    color: Theme.of(context).colorScheme.onBackground,
+        child: Card(
+          color: Theme.of(context).colorScheme.primary,
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    arguments.title,
+                    style: TextStyle(
+                      fontSize:
+                          Theme.of(context).textTheme.titleLarge?.fontSize ??
+                              24.0,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-              ImageNetwork(pictureUrl: arguments.picture, fit: BoxFit.fill),
-              Padding(
-                padding: const EdgeInsets.only(
-                    top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
-                child: Text(
-                  arguments.description,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                ImageNetwork(pictureUrl: arguments.picture, fit: BoxFit.fill),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
+                  child: Text(
+                    arguments.description,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 16.0,
+                    ),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Text(
-                  'Режиссер: ${arguments.director}',
-                  style: Theme.of(context).textTheme.bodyLarge,
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    'Режиссер: ${arguments.director}',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 12.0,
+                    ),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Text(
-                  'Жанр: ${arguments.genre}',
-                  style: Theme.of(context).textTheme.bodyLarge,
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    'Жанр: ${arguments.genre}',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 12.0,
+                    ),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Text(
-                  'Дата релиза: ${arguments.releaseDate}',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(
+                      bottom: 8, left: 16.0, right: 16.0, top: 4.0),
+                  child: Text(
+                    'Дата релиза: ${arguments.releaseDate}',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                      fontSize: 12.0,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
