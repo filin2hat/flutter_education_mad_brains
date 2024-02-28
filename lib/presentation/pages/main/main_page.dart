@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/features/home/pages/home_page.dart';
 
-import '../../features/home/pages/catalog_page.dart';
+import '../home/pages/catalog_page.dart';
+import '../home/pages/home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -87,8 +87,7 @@ class _MainPageState extends State<MainPage> {
 }
 
 class _Tab extends StatelessWidget {
-  const _Tab(
-      {super.key, required this.icon, required this.label, required this.page});
+  const _Tab({required this.icon, required this.label, required this.page});
 
   final Icon icon;
   final String label;

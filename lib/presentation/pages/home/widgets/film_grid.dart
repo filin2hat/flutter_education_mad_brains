@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_education_mad_brains/data/mock/dummy_films_data.dart';
 
-import '../../../app/data/mock/dummy_films_data.dart';
-import '../../../app/widgets/film_card.dart';
+import '../../../widgets/film_card.dart';
 
 class FilmGrid extends StatelessWidget {
   const FilmGrid({super.key});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../features/details/pages/details_page.dart';
-import '../models/film_card_model.dart';
-import 'buttons/like_button.dart';
-import 'buttons/primary_button.dart';
-import 'image_network.dart';
+import '../../domain/models/film_card_model.dart';
+import '../components/buttons/like_button.dart';
+import '../components/buttons/primary_button.dart';
+import '../components/image_network.dart';
+import '../pages/details/pages/details_page.dart';
 
 class FilmCard extends StatelessWidget {
   const FilmCard({

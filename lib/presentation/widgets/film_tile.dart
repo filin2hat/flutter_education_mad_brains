@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../features/details/pages/details_page.dart';
-import '../models/film_card_model.dart';
-import 'image_network.dart';
+import '../../domain/models/film_card_model.dart';
+import '../components/image_network.dart';
+import '../pages/details/pages/details_page.dart';
 
 class FilmTile extends StatelessWidget {
   const FilmTile(

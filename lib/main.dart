@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/app_router.dart';
+import 'package:flutter_education_mad_brains/presentation/components/app_router.dart';
 
 void main() {
   runApp(const MyApp());

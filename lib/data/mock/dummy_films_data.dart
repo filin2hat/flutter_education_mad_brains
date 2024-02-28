@@ -1,4 +1,4 @@
-import '../../models/film_card_model.dart';
+import '../../domain/models/film_card_model.dart';
 
 const List<FilmCardModel> films = [
   FilmCardModel(

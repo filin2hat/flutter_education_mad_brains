@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/features/home/widgets/film_list.dart';
+
+import '../widgets/film_list.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

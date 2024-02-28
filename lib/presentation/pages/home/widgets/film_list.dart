@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../app/data/mock/dummy_films_data.dart';
-import '../../../app/widgets/film_tile.dart';
+import '../../../../data/mock/dummy_films_data.dart';
+import '../../../widgets/film_tile.dart';
 
 class FilmList extends StatelessWidget {
   const FilmList({super.key});
