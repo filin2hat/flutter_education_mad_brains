@@ -11,13 +11,26 @@ class AppRouter {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case mainRoute:
-        return MaterialPageRoute(builder: (_) => const MainPage());
+        return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const MainPage(),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        );
       case settingsRoute:
-        return MaterialPageRoute(builder: (_) => const SettingsPage());
+        return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const SettingsPage(),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        );
       case detailsRoute:
         final arguments = settings.arguments as DetailsArguments;
-        return MaterialPageRoute(
-          builder: (_) => DetailsPage(arguments: arguments),
+        return PageRouteBuilder(
+          pageBuilder: (_, __, ___) => DetailsPage(arguments: arguments),
+          transitionsBuilder: (_, animation, __, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
         );
       default:
         return null;

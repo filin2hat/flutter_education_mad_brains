@@ -60,7 +60,12 @@ class _MainPageState extends State<MainPage> {
           )
         ],
       ),
-      body: MainPage._tabs.elementAt(_selectedIndex).page,
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 500),
+        switchInCurve: Curves.easeInCirc,
+        switchOutCurve: Curves.easeOutCirc,
+        child: MainPage._tabs.elementAt(_selectedIndex).page,
+      ),
       bottomNavigationBar: _buildBottomNavigationBar(context),
     );
   }

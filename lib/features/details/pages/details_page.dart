@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/app/widgets/image_network.dart';
+
+import '../widgets/film_details.dart';
 
 class DetailsArguments {
   const DetailsArguments(this.id, this.title, this.picture, this.voteAverage,
@@ -26,81 +27,13 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      backgroundColor: Theme.of(context).colorScheme.onBackground,
       appBar: AppBar(
         title: const Text('Details', style: TextStyle(color: Colors.white)),
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(8.0),
-        child: Card(
-          color: Theme.of(context).colorScheme.primary,
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    arguments.title,
-                    style: TextStyle(
-                      fontSize:
-                          Theme.of(context).textTheme.titleLarge?.fontSize ??
-                              24.0,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                ImageNetwork(pictureUrl: arguments.picture, fit: BoxFit.fill),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 16.0, left: 16.0, right: 16.0, bottom: 4.0),
-                  child: Text(
-                    arguments.description,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    'Режиссер: ${arguments.director}',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      fontSize: 12.0,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    'Жанр: ${arguments.genre}',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      fontSize: 12.0,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      bottom: 8, left: 16.0, right: 16.0, top: 4.0),
-                  child: Text(
-                    'Дата релиза: ${arguments.releaseDate}',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      fontSize: 12.0,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
+      body: FilmDetails(arguments: arguments),
     );
   }
 }
