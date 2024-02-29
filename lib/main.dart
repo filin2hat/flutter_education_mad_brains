@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'features/home/pages/home_page.dart';
+import 'package:flutter_education_mad_brains/app/widgets/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Films App',
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Theme.of(context).colorScheme.primary,
+        ),
         fontFamily: 'Anta',
-        primarySwatch: Colors.red,
         useMaterial3: true,
       ),
-      home: const StartPage(),
+      home: const MainPage(),
     );
   }
 }

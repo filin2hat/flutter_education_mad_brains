@@ -23,12 +23,12 @@ flutter:
 
   uses-material-design: true
 
-  assets:
-    - assets/posters/img1.jpg
-    - assets/posters/img2.jpg
-    - assets/posters/img3.jpg
-    - assets/posters/img4.jpg
-    - assets/posters/img5.jpg
+#  assets:
+#    - assets/posters/img1.jpg
+#    - assets/posters/img2.jpg
+#    - assets/posters/img3.jpg
+#    - assets/posters/img4.jpg
+#    - assets/posters/img5.jpg
 
   fonts:
     - family: Anta

@@ -1,3 +1,3 @@
 # flutter_education_mad_brains
-
-Educational project from Mad Brains.
+## Description
+This is a sample project for Flutter education course.
