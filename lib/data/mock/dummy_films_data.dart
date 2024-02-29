@@ -1,7 +1,7 @@
 import '../../domain/models/film_card_model.dart';
 
-const List<FilmCardModel> films = [
-  FilmCardModel(
+const List<MovieCardModel> films = [
+  MovieCardModel(
     id: 1,
     title: 'Зеленая миля',
     voteAverage: 9.1,
@@ -15,7 +15,7 @@ const List<FilmCardModel> films = [
     director: 'Фрэнсис Форд Коппола',
     genre: 'Драма',
   ),
-  FilmCardModel(
+  MovieCardModel(
     id: 2,
     title: 'Властелин Колец: Братство Кольца',
     voteAverage: 8.6,
@@ -28,7 +28,7 @@ const List<FilmCardModel> films = [
     director: 'Питер Джексон',
     genre: 'Фантастика',
   ),
-  FilmCardModel(
+  MovieCardModel(
     id: 3,
     title: 'Пила',
     voteAverage: 7.7,
@@ -41,7 +41,7 @@ const List<FilmCardModel> films = [
     director: 'Дэвид Хакл',
     genre: 'Триллер',
   ),
-  FilmCardModel(
+  MovieCardModel(
     id: 4,
     title: 'Город Бога',
     voteAverage: 8.1,
@@ -57,7 +57,7 @@ const List<FilmCardModel> films = [
     director: 'Фернанду Мейреллиш, Катя Лунд',
     genre: 'Драма',
   ),
-  FilmCardModel(
+  MovieCardModel(
     id: 5,
     title: 'Форрест Гамп ',
     voteAverage: 8.9,
@@ -72,7 +72,7 @@ const List<FilmCardModel> films = [
     director: 'Роберт Земекис',
     genre: 'Драма',
   ),
-  FilmCardModel(
+  MovieCardModel(
     id: 6,
     title: 'Престиж',
     voteAverage: 8.5,

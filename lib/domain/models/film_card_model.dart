@@ -1,5 +1,5 @@
-class FilmCardModel {
-  const FilmCardModel({
+class MovieCardModel {
+  const MovieCardModel({
     required this.id,
     required this.title,
     this.picture = '',

@@ -17,7 +17,7 @@ class FilmTile extends StatelessWidget {
       required this.genre});
 
   factory FilmTile.fromModel({
-    required FilmCardModel model,
+    required MovieCardModel model,
     Key? key,
   }) {
     return FilmTile(

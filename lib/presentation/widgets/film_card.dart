@@ -20,7 +20,7 @@ class FilmCard extends StatelessWidget {
   });
 
   factory FilmCard.fromModel({
-    required FilmCardModel model,
+    required MovieCardModel model,
     Key? key,
   }) {
     return FilmCard(

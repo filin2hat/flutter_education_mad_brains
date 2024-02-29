@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/app/widgets/main_page.dart';
-import 'package:flutter_education_mad_brains/features/details/pages/details_page.dart';
-import 'package:flutter_education_mad_brains/features/settings/pages/settings_page.dart';
+
+import '../pages/details/pages/details_page.dart';
+import '../pages/main/main_page.dart';
+import '../pages/settings/pages/settings_page.dart';
 
 class AppRouter {
   static const String mainRoute = '/';
