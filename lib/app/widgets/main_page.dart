@@ -5,6 +5,8 @@ import '../../features/home/pages/catalog_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  static const String path = '/';
   static const List<_Tab> _tabs = <_Tab>[
     _Tab(
       icon: Icon(Icons.local_movies_outlined),
@@ -39,7 +41,7 @@ class _MainPageState extends State<MainPage> {
         leading: IconButton(
           icon: const Icon(Icons.menu, color: Colors.white),
           onPressed: () {
-//TODO : implement menu function
+            //TODO : implement menu function
           },
         ),
         title: const Text('Films App', style: TextStyle(color: Colors.white)),
@@ -48,28 +50,38 @@ class _MainPageState extends State<MainPage> {
           IconButton(
               icon: const Icon(Icons.sort, color: Colors.white),
               onPressed: () {
-//TODO : implement sort function
+                //TODO : implement sort function
               }),
           IconButton(
-              icon: const Icon(Icons.settings, color: Colors.white),
-              onPressed: () {
-//TODO : implement settings function
-              })
+            icon: const Icon(Icons.settings, color: Colors.white),
+            onPressed: () {
+              Navigator.pushNamed(context, '/settings');
+            },
+          )
         ],
       ),
-      body: MainPage._tabs.elementAt(_selectedIndex).page,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        selectedItemColor: Colors.white,
-        items: List.generate(
-            MainPage._tabs.length,
-            (index) => BottomNavigationBarItem(
-                  icon: MainPage._tabs.elementAt(index).icon,
-                  label: MainPage._tabs.elementAt(index).label,
-                )),
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 500),
+        switchInCurve: Curves.easeInCirc,
+        switchOutCurve: Curves.easeOutCirc,
+        child: MainPage._tabs.elementAt(_selectedIndex).page,
       ),
+      bottomNavigationBar: _buildBottomNavigationBar(context),
+    );
+  }
+
+  BottomNavigationBar _buildBottomNavigationBar(BuildContext context) {
+    return BottomNavigationBar(
+      backgroundColor: Theme.of(context).primaryColor,
+      selectedItemColor: Colors.white,
+      items: List.generate(
+          MainPage._tabs.length,
+          (index) => BottomNavigationBarItem(
+                icon: MainPage._tabs.elementAt(index).icon,
+                label: MainPage._tabs.elementAt(index).label,
+              )),
+      currentIndex: _selectedIndex,
+      onTap: _onItemTapped,
     );
   }
 }

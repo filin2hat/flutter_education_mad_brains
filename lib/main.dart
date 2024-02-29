@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/app/widgets/main_page.dart';
+import 'package:flutter_education_mad_brains/app_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Anta',
         useMaterial3: true,
       ),
-      home: const MainPage(),
+      initialRoute: AppRouter.mainRoute,
+      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }

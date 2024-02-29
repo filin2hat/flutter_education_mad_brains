@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_education_mad_brains/app/widgets/buttons/primary_button.dart';
-import 'package:flutter_education_mad_brains/app/widgets/image_network.dart';
 
+import '../../features/details/pages/details_page.dart';
 import '../models/film_card_model.dart';
 import 'buttons/like_button.dart';
+import 'buttons/primary_button.dart';
+import 'image_network.dart';
 
 class FilmCard extends StatelessWidget {
-  const FilmCard(
-      {super.key,
-      required this.id,
-      required this.title,
-      required this.picture,
-      required this.voteAverage});
+  const FilmCard({
+    super.key,
+    required this.id,
+    required this.title,
+    required this.picture,
+    required this.voteAverage,
+    required this.releaseDate,
+    required this.description,
+    required this.director,
+    required this.genre,
+  });
 
-  factory FilmCard.fromModel({required FilmCardModel model, Key? key}) {
+  factory FilmCard.fromModel({
+    required FilmCardModel model,
+    Key? key,
+  }) {
     return FilmCard(
+      key: key,
       id: model.id,
       title: model.title,
       picture: model.picture,
       voteAverage: model.voteAverage,
-      key: key,
+      releaseDate: model.releaseDate,
+      description: model.description,
+      director: model.director,
+      genre: model.genre,
     );
   }
 
@@ -27,6 +40,11 @@ class FilmCard extends StatelessWidget {
   final String title;
   final String picture;
   final double voteAverage;
+  final String releaseDate;
+  final String description;
+  final String director;
+  final String genre;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -45,7 +63,7 @@ class FilmCard extends StatelessWidget {
           top: 4,
           child: Padding(
             padding: const EdgeInsets.only(right: 4),
-            child: _RatingChip(voteAverage: voteAverage),
+            child: _buildRatingChip(context),
           ),
         ),
         Positioned(
@@ -56,7 +74,7 @@ class FilmCard extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 8),
             child: PrimaryButton(
               title: "More",
-              onPressed: () {},
+              onPressed: () => _onTap(context),
             ),
           ),
         ),
@@ -68,15 +86,8 @@ class FilmCard extends StatelessWidget {
       ],
     );
   }
-}
 
-class _RatingChip extends StatelessWidget {
-  const _RatingChip({super.key, required this.voteAverage});
-
-  final double voteAverage;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildRatingChip(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       child: DecoratedBox(
@@ -108,13 +119,31 @@ class _RatingChip extends StatelessWidget {
                   Text(
                     voteAverage.toStringAsFixed(1),
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        color: Theme.of(context).colorScheme.onPrimary),
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
                   )
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  void _onTap(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      DetailsPage.path,
+      arguments: DetailsArguments(
+        id,
+        title,
+        picture,
+        voteAverage,
+        releaseDate,
+        description,
+        director,
+        genre,
       ),
     );
   }
