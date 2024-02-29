@@ -10,12 +10,12 @@ class MainPage extends StatefulWidget {
   static const List<_Tab> _tabs = <_Tab>[
     _Tab(
       icon: Icon(Icons.local_movies_outlined),
-      label: "Feed",
+      label: "TOP All",
       page: HomePage(),
     ),
     _Tab(
       icon: Icon(Icons.movie_filter),
-      label: "Catalog",
+      label: "TOP 250",
       page: CatalogPage(),
     ),
   ];

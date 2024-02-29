@@ -17,10 +17,12 @@ class ImageNetwork extends StatelessWidget {
       if (loadingProgress == null) {
         return child;
       }
-      return const SizedBox(
-        width: 100,
-        height: 100,
-        child: CircularProgressIndicator(),
+      return const Center(
+        child: SizedBox(
+          width: 70,
+          height: 70,
+          child: CircularProgressIndicator(),
+        ),
       );
     });
   }
