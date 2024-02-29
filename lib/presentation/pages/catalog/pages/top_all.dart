@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/film_grid.dart';
+import '../widgets/film_list.dart';
 
-class CatalogPage extends StatelessWidget {
-  const CatalogPage({super.key});
+class TopAll extends StatelessWidget {
+  const TopAll({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const FilmGrid(),
+      body: const FilmList(),
       backgroundColor: Theme.of(context).colorScheme.onBackground,
     );
   }

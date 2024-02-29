@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../components/image_network.dart';
+import '../../../components/utils/image_network.dart';
 import '../pages/details_page.dart';
 
 class FilmDetails extends StatelessWidget {

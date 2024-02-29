@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../home/pages/catalog_page.dart';
-import '../home/pages/home_page.dart';
+import 'package:flutter_education_mad_brains/presentation/pages/catalog/pages/top_250.dart';
+import 'package:flutter_education_mad_brains/presentation/pages/catalog/pages/top_all.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -11,12 +10,12 @@ class MainPage extends StatefulWidget {
     _Tab(
       icon: Icon(Icons.local_movies_outlined),
       label: "TOP All",
-      page: HomePage(),
+      page: TopAll(),
     ),
     _Tab(
       icon: Icon(Icons.movie_filter),
       label: "TOP 250",
-      page: CatalogPage(),
+      page: Top250(),
     ),
   ];
 

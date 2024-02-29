@@ -4,33 +4,33 @@ import 'package:flutter/material.dart';
 import '../../../../data/repository/repository.dart';
 import '../../../../domain/models/film_model.dart';
 import '../../../../domain/models/films_list_model.dart';
-import '../../../widgets/film_card.dart';
+import '../../../widgets/film_tile.dart';
 
-class FilmGrid extends StatelessWidget {
-  const FilmGrid({super.key});
+class FilmList extends StatelessWidget {
+  const FilmList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<FilmsListModel?>(
       future: FilmRepository.getFilmList(
-        queryType: FilmQuery.queryTop250Movies,
+        queryType: FilmQuery.queryTopPopularMovies,
         queryPage: 1,
       ),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (snapshot.hasError) {
+        if (snapshot.hasError) {
           return Center(
+              child: Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Error loading films: ${snapshot.error}',
-              style: Theme.of(context).textTheme.titleLarge,
+              'Failed to load films: ${snapshot.error}',
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.error, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
-          );
+          ));
         } else if (snapshot.hasData && snapshot.data != null) {
           final filmsList = snapshot.data!;
-          return _FilmGridView(filmsList: filmsList);
+          return _FilmListView(filmsList: filmsList);
         } else {
           return Center(
             child: Text(
@@ -44,16 +44,16 @@ class FilmGrid extends StatelessWidget {
   }
 }
 
-class _FilmGridView extends StatefulWidget {
+class _FilmListView extends StatefulWidget {
   final FilmsListModel filmsList;
 
-  const _FilmGridView({required this.filmsList});
+  const _FilmListView({required this.filmsList});
 
   @override
-  State<_FilmGridView> createState() => _FilmGridViewState();
+  State<_FilmListView> createState() => _FilmListViewState();
 }
 
-class _FilmGridViewState extends State<_FilmGridView> {
+class _FilmListViewState extends State<_FilmListView> {
   final ScrollController _scrollController = ScrollController();
   final List<FilmModel> _films = [];
   int _currentPage = 1;
@@ -91,6 +91,14 @@ class _FilmGridViewState extends State<_FilmGridView> {
     }
   }
 
+  Future<void> _refreshFilms() async {
+    setState(() {
+      _films.clear();
+      _currentPage = 1;
+    });
+    await _loadFilms();
+  }
+
   bool _isLoadMore() {
     return !_isLoading &&
         _scrollController.position.pixels >=
@@ -105,23 +113,19 @@ class _FilmGridViewState extends State<_FilmGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      controller: _scrollController,
-      itemCount: _films.length + (_isLoading ? 1 : 0),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 2 / 3,
+    return RefreshIndicator(
+      onRefresh: _refreshFilms,
+      child: ListView.builder(
+        controller: _scrollController,
+        itemCount: _films.length + (_isLoading ? 1 : 0),
+        itemBuilder: (BuildContext context, int index) {
+          if (index < _films.length) {
+            return FilmTile.fromModel(model: _films[index]);
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
       ),
-      itemBuilder: (BuildContext context, int index) {
-        if (index < _films.length) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FilmCard.fromModel(model: _films[index]),
-          );
-        } else {
-          return const Center(child: CircularProgressIndicator());
-        }
-      },
     );
   }
 

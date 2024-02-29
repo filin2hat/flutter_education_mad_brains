@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../domain/models/film_model.dart';
 import '../components/buttons/like_button.dart';
 import '../components/buttons/primary_button.dart';
-import '../components/image_network.dart';
+import '../components/utils/image_network.dart';
 import '../pages/details/pages/details_page.dart';
 
 class FilmCard extends StatelessWidget {

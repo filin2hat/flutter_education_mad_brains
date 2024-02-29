@@ -4,33 +4,33 @@ import 'package:flutter/material.dart';
 import '../../../../data/repository/repository.dart';
 import '../../../../domain/models/film_model.dart';
 import '../../../../domain/models/films_list_model.dart';
-import '../../../widgets/film_tile.dart';
+import '../../../widgets/film_card.dart';
 
-class FilmList extends StatelessWidget {
-  const FilmList({super.key});
+class FilmGrid extends StatelessWidget {
+  const FilmGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<FilmsListModel?>(
       future: FilmRepository.getFilmList(
-        queryType: FilmQuery.queryTopPopularMovies,
+        queryType: FilmQuery.queryTop250Movies,
         queryPage: 1,
       ),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (snapshot.hasError) {
+        if (snapshot.hasError) {
           return Center(
+              child: Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Error loading films: ${snapshot.error}',
-              style: Theme.of(context).textTheme.titleLarge,
+              'Failed to load films: ${snapshot.error}',
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.error, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
-          );
+          ));
         } else if (snapshot.hasData && snapshot.data != null) {
           final filmsList = snapshot.data!;
-          return _FilmListView(filmsList: filmsList);
+          return _FilmGridView(filmsList: filmsList);
         } else {
           return Center(
             child: Text(
@@ -44,16 +44,16 @@ class FilmList extends StatelessWidget {
   }
 }
 
-class _FilmListView extends StatefulWidget {
+class _FilmGridView extends StatefulWidget {
   final FilmsListModel filmsList;
 
-  const _FilmListView({required this.filmsList});
+  const _FilmGridView({required this.filmsList});
 
   @override
-  State<_FilmListView> createState() => _FilmListViewState();
+  State<_FilmGridView> createState() => _FilmGridViewState();
 }
 
-class _FilmListViewState extends State<_FilmListView> {
+class _FilmGridViewState extends State<_FilmGridView> {
   final ScrollController _scrollController = ScrollController();
   final List<FilmModel> _films = [];
   int _currentPage = 1;
@@ -91,6 +91,14 @@ class _FilmListViewState extends State<_FilmListView> {
     }
   }
 
+  Future<void> _refreshFilms() async {
+    setState(() {
+      _films.clear();
+      _currentPage = 1;
+    });
+    await _loadFilms();
+  }
+
   bool _isLoadMore() {
     return !_isLoading &&
         _scrollController.position.pixels >=
@@ -105,16 +113,26 @@ class _FilmListViewState extends State<_FilmListView> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _films.length + (_isLoading ? 1 : 0),
-      itemBuilder: (BuildContext context, int index) {
-        if (index < _films.length) {
-          return FilmTile.fromModel(model: _films[index]);
-        } else {
-          return const Center(child: CircularProgressIndicator());
-        }
-      },
+    return RefreshIndicator(
+      onRefresh: _refreshFilms,
+      child: GridView.builder(
+        controller: _scrollController,
+        itemCount: _films.length + (_isLoading ? 1 : 0),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 2 / 3,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          if (index < _films.length) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FilmCard.fromModel(model: _films[index]),
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 

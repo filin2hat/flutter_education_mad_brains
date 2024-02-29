@@ -22,7 +22,9 @@ class FilmQuery {
 }
 
 class FilmRepository {
-  static final Dio _dio = Dio()
+  static final Dio _dio = Dio(BaseOptions(
+    connectTimeout: const Duration(milliseconds: 5000),
+  ))
     ..interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
@@ -44,8 +46,8 @@ class FilmRepository {
       } else {
         throw Exception('Failed to load film list: ${response.data}');
       }
-    } on DioException catch (e) {
-      throw Exception('Failed to load film list: ${e.response?.data}');
+    } catch (e) {
+      throw Exception('Failed to load film list: ${e.toString()}');
     }
   }
 }
