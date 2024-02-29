@@ -1,20 +1,18 @@
-class MovieCardModel {
-  const MovieCardModel({
+class FilmModel {
+  const FilmModel({
     required this.id,
     required this.title,
     this.picture = '',
     this.voteAverage = 0.0,
     this.releaseDate = '',
-    this.description = '',
-    this.director = '',
-    this.genre = '',
+    this.countries = const [],
+    this.genres = const [],
   });
   final int id;
   final String title;
   final String picture;
+  final List<String> countries;
   final double voteAverage;
   final String releaseDate;
-  final String description;
-  final String director;
-  final String genre;
+  final List<String> genres;
 }

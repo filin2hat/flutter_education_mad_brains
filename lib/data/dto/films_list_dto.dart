@@ -13,8 +13,10 @@ class FilmsListDto {
   });
   @JsonKey(name: 'total')
   final int totalFilmsCounter;
+
   @JsonKey(name: 'totalPages')
   final int totalPages;
+
   @JsonKey(name: 'items')
   final List<FilmDto> result;
 

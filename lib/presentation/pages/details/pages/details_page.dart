@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import '../widgets/film_details.dart';
 
 class DetailsArguments {
-  const DetailsArguments(this.id, this.title, this.picture, this.voteAverage,
-      this.releaseDate, this.description, this.director, this.genre);
+  const DetailsArguments(this.id, this.title, this.picture, this.countries,
+      this.voteAverage, this.releaseDate, this.genres);
   final int id;
   final String title;
   final String picture;
+  final List<String> countries;
   final double voteAverage;
   final String releaseDate;
-  final String description;
-  final String director;
-  final String genre;
+  final List<String> genres;
 }
 
 class DetailsPage extends StatelessWidget {

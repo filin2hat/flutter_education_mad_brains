@@ -1,46 +1,44 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/film_card_model.dart';
+import '../../domain/models/film_model.dart';
 import '../components/image_network.dart';
 import '../pages/details/pages/details_page.dart';
 
 class FilmTile extends StatelessWidget {
-  const FilmTile(
-      {super.key,
-      required this.id,
-      required this.title,
-      required this.picture,
-      required this.voteAverage,
-      required this.releaseDate,
-      required this.description,
-      required this.director,
-      required this.genre});
-
-  factory FilmTile.fromModel({
-    required MovieCardModel model,
-    Key? key,
-  }) {
-    return FilmTile(
-      id: model.id,
-      title: model.title,
-      picture: model.picture,
-      voteAverage: model.voteAverage,
-      releaseDate: model.releaseDate,
-      description: model.description,
-      director: model.director,
-      genre: model.genre,
-      key: key,
-    );
-  }
+  const FilmTile({
+    super.key,
+    required this.id,
+    required this.title,
+    required this.picture,
+    required this.countries,
+    required this.voteAverage,
+    required this.releaseDate,
+    required this.genres,
+  });
 
   final int id;
   final String title;
   final String picture;
+  final List<String> countries;
   final double voteAverage;
   final String releaseDate;
-  final String description;
-  final String director;
-  final String genre;
+  final List<String> genres;
+
+  factory FilmTile.fromModel({
+    required FilmModel model,
+    Key? key,
+  }) {
+    return FilmTile(
+      key: key,
+      id: model.id,
+      title: model.title,
+      picture: model.picture,
+      countries: model.countries,
+      voteAverage: model.voteAverage,
+      releaseDate: model.releaseDate,
+      genres: model.genres,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +117,7 @@ class FilmTile extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          description,
+                          countries.join(', '),
                           maxLines: 6,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.bodySmall,
@@ -140,8 +138,15 @@ class FilmTile extends StatelessWidget {
     Navigator.pushNamed(
       context,
       '/details',
-      arguments: DetailsArguments(id, title, picture, voteAverage, releaseDate,
-          description, director, genre),
+      arguments: DetailsArguments(
+        id,
+        title,
+        picture,
+        countries,
+        voteAverage,
+        releaseDate,
+        genres,
+      ),
     );
   }
 }

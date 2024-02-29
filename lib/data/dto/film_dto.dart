@@ -18,16 +18,22 @@ class FilmDto {
   });
   @JsonKey(name: 'kinopoiskId', defaultValue: 0)
   final int id;
+
   @JsonKey(name: 'nameRu', defaultValue: '')
   final String name;
+
   @JsonKey(name: 'posterUrl')
   final String? picture;
+
   @JsonKey(name: 'countries')
   final List<CountryDto>? countries;
+
   @JsonKey(name: 'genres')
   final List<GenreDto>? genres;
+
   @JsonKey(name: 'ratingKinopoisk')
   final double? rating;
+
   @JsonKey(name: 'year')
   final int? year;
 

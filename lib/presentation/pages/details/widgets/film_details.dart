@@ -31,7 +31,6 @@ class FilmDetails extends StatelessWidget {
               _buildImage(context),
               _buildDescription(context),
               _buildDirector(context),
-              _buildGenre(context),
               _buildReleaseDate(context),
             ],
           ),
@@ -87,7 +86,7 @@ class FilmDetails extends StatelessWidget {
         bottom: 4.0,
       ),
       child: Text(
-        arguments.description,
+        arguments.countries.join(', '),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onPrimary,
           fontSize: 16.0,
@@ -100,20 +99,7 @@ class FilmDetails extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: Text(
-        'Режиссер: ${arguments.director}',
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.onPrimary,
-          fontSize: 12.0,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildGenre(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Text(
-        'Жанр: ${arguments.genre}',
+        arguments.genres.join(', '),
         style: TextStyle(
           color: Theme.of(context).colorScheme.onPrimary,
           fontSize: 12.0,

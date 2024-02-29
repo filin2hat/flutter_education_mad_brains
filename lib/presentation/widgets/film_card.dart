@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/models/film_card_model.dart';
+import '../../domain/models/film_model.dart';
 import '../components/buttons/like_button.dart';
 import '../components/buttons/primary_button.dart';
 import '../components/image_network.dart';
@@ -12,15 +12,14 @@ class FilmCard extends StatelessWidget {
     required this.id,
     required this.title,
     required this.picture,
+    required this.countries,
     required this.voteAverage,
     required this.releaseDate,
-    required this.description,
-    required this.director,
-    required this.genre,
+    required this.genres,
   });
 
   factory FilmCard.fromModel({
-    required MovieCardModel model,
+    required FilmModel model,
     Key? key,
   }) {
     return FilmCard(
@@ -28,22 +27,20 @@ class FilmCard extends StatelessWidget {
       id: model.id,
       title: model.title,
       picture: model.picture,
+      countries: model.countries,
       voteAverage: model.voteAverage,
       releaseDate: model.releaseDate,
-      description: model.description,
-      director: model.director,
-      genre: model.genre,
+      genres: model.genres,
     );
   }
 
   final int id;
   final String title;
   final String picture;
+  final List<String> countries;
   final double voteAverage;
   final String releaseDate;
-  final String description;
-  final String director;
-  final String genre;
+  final List<String> genres;
 
   @override
   Widget build(BuildContext context) {
@@ -139,11 +136,10 @@ class FilmCard extends StatelessWidget {
         id,
         title,
         picture,
+        countries,
         voteAverage,
         releaseDate,
-        description,
-        director,
-        genre,
+        genres,
       ),
     );
   }
